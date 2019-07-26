@@ -25,16 +25,4 @@ class MockRestGateway: RestGateway {
         }
         return delegate.returningResponse(guestList).getAllGuests()
     }
-
-    override fun getGuest(): Call<Guest> {
-        var guest = Guest()
-        guest.firstname = "Test"
-        guest.lastname = "Testni"
-        guest.dateFrom = "10.07.2019"
-        guest.dateTill = "20.07.2019"
-        guest.didPay = true
-        return delegate.returningResponse(guest).getGuest()
-    }
-
-
 }

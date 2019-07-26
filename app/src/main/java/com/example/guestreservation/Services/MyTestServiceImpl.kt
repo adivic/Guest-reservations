@@ -31,18 +31,4 @@ class MyTestServiceImpl: MyTestService {
             }
         })
     }
-
-    override fun getGuest(callback: ServiceCallback<Guest, Error>) {
-        val call: Call<Guest> = restGateway.getGuest()
-
-        call.enqueue(object : Callback<Guest> {
-            override fun onResponse(call: Call<Guest>, response: Response<Guest>) {
-                callback.success(response.body()!!)
-            }
-
-            override fun onFailure(call: Call<Guest>, t: Throwable) {
-
-            }
-        })
-    }
 }

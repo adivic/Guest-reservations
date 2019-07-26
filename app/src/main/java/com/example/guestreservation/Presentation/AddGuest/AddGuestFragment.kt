@@ -3,20 +3,13 @@ package com.example.guestreservation.Presentation.AddGuest
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.guestreservation.MainActivity
 import com.example.guestreservation.Model.Guest
 import com.example.guestreservation.R
-import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.add_guest_fragment.*
-import org.reactivestreams.Subscription
 import java.util.*
 
 class AddGuestFragment : Fragment() {
@@ -34,13 +27,13 @@ class AddGuestFragment : Fragment() {
 
     private fun setDateFromPicker() {
         val calendar = Calendar.getInstance()
-        guestDateFromInput.setOnClickListener {
+        detailDateFrom.setOnClickListener {
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
             val datePickerDialog = DatePickerDialog(context!!, DatePickerDialog.OnDateSetListener
             { _, year, monthOfYear, dayOfMonth ->
-                guestDateFromInput.text = "$dayOfMonth.${monthOfYear+1}.$year"
+                detailDateFrom.text = "$dayOfMonth.${monthOfYear+1}.$year"
             }, year, month, day)
             datePickerDialog.show()
         }
@@ -48,13 +41,13 @@ class AddGuestFragment : Fragment() {
 
     private fun setDateTillPicker() {
         val calendar = Calendar.getInstance()
-        guestDateTillInput.setOnClickListener {
+        detailDateTill.setOnClickListener {
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
             val datePickerDialog = DatePickerDialog(context!!, DatePickerDialog.OnDateSetListener
             { _, year, monthOfYear, dayOfMonth ->
-                guestDateTillInput.text = "$dayOfMonth.${monthOfYear+1}.$year"
+                detailDateTill.text = "$dayOfMonth.${monthOfYear+1}.$year"
             }, year, month, day)
             datePickerDialog.show()
         }
@@ -62,11 +55,11 @@ class AddGuestFragment : Fragment() {
 
     private fun setConfirmBtnClickListener() {
         confirmBtn.setOnClickListener {
-            val firstname = guestFirstnameInput.text.toString()
-            val lastname = guestLastnameInput.text.toString()
-            val dateFrom = guestDateFromInput.text.toString()
-            val dateTill = guestDateTillInput.text.toString()
-            val didPay = guestDidPaySwitch.isChecked
+            val firstname = detailFirstname.text.toString()
+            val lastname = detailLastname.text.toString()
+            val dateFrom = detailDateFrom.text.toString()
+            val dateTill = detailDateTill.text.toString()
+            val didPay = detailDidPay.isChecked
             var guest = Guest()
             guest.firstname = firstname
             guest.lastname = lastname
