@@ -1,10 +1,10 @@
 package com.example.guestreservation.Presentation.ListGuests
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import com.example.guestreservation.MainActivity
 import com.example.guestreservation.Model.Guest
 import com.example.guestreservation.R
 import kotlinx.android.synthetic.main.guest_details.*
@@ -25,6 +25,7 @@ class GuestDetailsFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         setDetailsData()
+        (activity as MainActivity).setBackButton(true)
     }
 
     private fun setDetailsData() {

@@ -4,15 +4,8 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import android.widget.TextView
-import com.example.guestreservation.Model.Guest
 import com.example.guestreservation.Presentation.AddGuest.AddGuestFragment
 import com.example.guestreservation.Presentation.ListGuests.GuestListFragment
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-
 class MainActivity : AppCompatActivity() {
 
     private val addGuestFragment: AddGuestFragment by lazy { AddGuestFragment() }
@@ -40,6 +33,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+    }
+
+    fun setBackButton(showBack: Boolean) {
+        supportActionBar?.setDisplayHomeAsUpEnabled(showBack)
     }
 
     private fun presentFragment(fragment: Fragment) {
