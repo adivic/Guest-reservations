@@ -50,7 +50,7 @@
              app:layout_constraintEnd_toEndOf="parent"/>
  </android.support.constraint.ConstraintLayout>
 
- <!-- Last name -->
+        <!-- Last name -->
         <android.support.constraint.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                 android:layout_marginStart="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/guestDateTillContainer">
+                app:layout_constraintTop_toBottomOf="@+id/guestDescriptionContainer">
 
             <TextView
                     android:text="Did pay"
@@ -195,6 +195,44 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:gravity="end"
                     android:layout_marginEnd="10dp"/>
+        </android.support.constraint.ConstraintLayout>
+
+        <!-- Description -->
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/guestDescriptionContainer"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/guestDateTillContainer">
+
+            <TextView
+                    android:text="Description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/detailDescriptionLabel"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="5dp"
+                    app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:id="@+id/detailDescription"
+                    app:layout_constraintStart_toEndOf="@+id/detailDescriptionLabel"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginBottom="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:gravity="end"
+                    android:hint="Description"
+                    app:layout_constraintEnd_toEndOf="parent"
+            />
         </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>

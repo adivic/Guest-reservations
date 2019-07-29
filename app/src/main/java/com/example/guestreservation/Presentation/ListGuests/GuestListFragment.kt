@@ -13,6 +13,7 @@ import com.example.guestreservation.Model.Guest
 import com.example.guestreservation.R
 import com.example.guestreservation.Rest.ServiceCallback
 import com.example.guestreservation.Services.MyTestService
+import com.example.guestreservation.hideBackButton
 import com.example.guestreservation.presentFragmentInContainer
 import kotlinx.android.synthetic.main.list_guest_fragment.*
 import org.koin.android.ext.android.inject
@@ -35,6 +36,11 @@ class GuestListFragment : Fragment(), GuestListAdapter.GuestListAdapterListener 
         addRecyclerViewAdapterToRecyclerView()
         setupRecyclerViewAdapterListener()
         loadData()
+        hideBackButton()
+    }
+
+    private fun hideBackButton() {
+        (activity!! as MainActivity).hideBackButton()
     }
 
     private fun setupRecyclerView() {

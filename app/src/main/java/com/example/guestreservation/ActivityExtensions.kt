@@ -9,3 +9,11 @@ fun AppCompatActivity.presentFragmentInContainer(fragment: Fragment, containerId
     transaction.replace(containerId, fragment)
     transaction.commit()
 }
+
+fun AppCompatActivity.showBackButton() {
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+}
+
+fun AppCompatActivity.hideBackButton() {
+    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+}

@@ -21,6 +21,7 @@ class MockRestGateway: RestGateway {
             guest.dateFrom = "1$i.07.2019"
             guest.dateTill = "2$i.07.2019"
             guest.didPay = true
+            guest.description = "Neuredna stoka $i, Uzeli sugaman"
             guestList.add(guest)
         }
         return delegate.returningResponse(guestList).getAllGuests()

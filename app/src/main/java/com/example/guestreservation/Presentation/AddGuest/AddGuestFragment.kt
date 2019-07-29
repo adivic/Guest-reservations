@@ -59,6 +59,7 @@ class AddGuestFragment : Fragment() {
             val lastname = detailLastname.text.toString()
             val dateFrom = detailDateFrom.text.toString()
             val dateTill = detailDateTill.text.toString()
+            val description = detailDescription.text.toString()
             val didPay = detailDidPay.isChecked
             var guest = Guest()
             guest.firstname = firstname
@@ -66,7 +67,8 @@ class AddGuestFragment : Fragment() {
             guest.dateFrom = dateFrom
             guest.dateTill = dateTill
             guest.didPay = didPay
-            Toast.makeText(context!!, "$firstname, $lastname, $dateFrom, $dateTill, $didPay", Toast.LENGTH_LONG).show()
+            guest.description = description
+            Toast.makeText(context!!, "$firstname, $lastname, $dateFrom, $dateTill, $didPay $description", Toast.LENGTH_LONG).show()
         }
     }
 }

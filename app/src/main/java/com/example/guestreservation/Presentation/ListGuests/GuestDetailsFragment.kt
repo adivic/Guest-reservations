@@ -7,6 +7,7 @@ import android.view.*
 import com.example.guestreservation.MainActivity
 import com.example.guestreservation.Model.Guest
 import com.example.guestreservation.R
+import com.example.guestreservation.showBackButton
 import kotlinx.android.synthetic.main.guest_details.*
 
 class GuestDetailsFragment : Fragment() {
@@ -25,7 +26,11 @@ class GuestDetailsFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         setDetailsData()
-        (activity as MainActivity).setBackButton(true)
+        showBackButton()
+    }
+
+    private fun showBackButton() {
+        (activity as MainActivity).showBackButton()
     }
 
     private fun setDetailsData() {
@@ -34,5 +39,6 @@ class GuestDetailsFragment : Fragment() {
         detailDateFrom.text = guest?.dateFrom
         detailDateTill.text = guest?.dateTill
         detailDidPay.isChecked = guest?.didPay ?: false
+        detailDescription.text = guest?.description
     }
 }

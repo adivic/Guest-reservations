@@ -9,6 +9,7 @@ class Guest() : Parcelable{
     var dateFrom: String? = null
     var dateTill: String? = null
     var didPay: Boolean = false
+    var description: String? = null
 
     constructor(parcel: Parcel) : this() {
         firstname = parcel.readString()
@@ -16,6 +17,7 @@ class Guest() : Parcelable{
         dateFrom = parcel.readString()
         dateTill = parcel.readString()
         didPay = parcel.readByte() != 0.toByte()
+        description = parcel.readString()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -24,6 +26,7 @@ class Guest() : Parcelable{
         parcel.writeString(dateFrom)
         parcel.writeString(dateTill)
         parcel.writeByte(if (didPay) 1 else 0)
+        parcel.writeString(description)
     }
 
     override fun describeContents(): Int {
