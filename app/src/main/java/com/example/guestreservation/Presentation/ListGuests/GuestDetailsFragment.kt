@@ -28,7 +28,6 @@ class GuestDetailsFragment : Fragment() {
         super.onStart()
         setDetailsData()
         showBackButton()
-        Observable<Guest>().subscribe({ println("CACA")}, {})
     }
 
     private fun showBackButton() {
