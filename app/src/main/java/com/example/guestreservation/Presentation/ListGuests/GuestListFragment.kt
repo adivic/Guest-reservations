@@ -1,5 +1,6 @@
 package com.example.guestreservation.Presentation.ListGuests
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
@@ -11,18 +12,17 @@ import android.view.ViewGroup
 import com.example.guestreservation.MainActivity
 import com.example.guestreservation.Model.Guest
 import com.example.guestreservation.R
-import com.example.guestreservation.Rest.ServiceCallback
-import com.example.guestreservation.Services.MyTestService
+import com.example.guestreservation.Services.GuestService
 import com.example.guestreservation.hideBackButton
-import com.example.guestreservation.presentFragmentInContainer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.list_guest_fragment.*
 import org.koin.android.ext.android.inject
-import java.lang.Error
 
 class GuestListFragment : Fragment(), GuestListAdapter.GuestListAdapterListener {
 
     private lateinit var guestAdapter: GuestListAdapter
-    private val service: MyTestService by inject()
+    private val service: GuestService by inject()
     private var guestSelected: Guest? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -44,7 +44,7 @@ class GuestListFragment : Fragment(), GuestListAdapter.GuestListAdapterListener 
     }
 
     private fun setupRecyclerView() {
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = LinearLayoutManager(context!!)
         recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
     }
 
@@ -60,15 +60,12 @@ class GuestListFragment : Fragment(), GuestListAdapter.GuestListAdapterListener 
         guestAdapter.setListener(this)
     }
 
+    @SuppressLint("CheckResult")
     private fun loadData() {
-       service.getAllGuests(object: ServiceCallback<List<Guest>, Error> {
-           override fun success(t: List<Guest>) {
-               guestAdapter.setData(t)
-               return
-           }
-
-           override fun error(u: Error) { }
-       })
+        service.getGuest()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({guestAdapter.setData(it)}, {})
     }
 
     private fun getBundle() : Bundle {

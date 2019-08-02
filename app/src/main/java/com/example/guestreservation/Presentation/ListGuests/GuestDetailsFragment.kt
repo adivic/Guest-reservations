@@ -8,6 +8,7 @@ import com.example.guestreservation.MainActivity
 import com.example.guestreservation.Model.Guest
 import com.example.guestreservation.R
 import com.example.guestreservation.showBackButton
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.guest_details.*
 
 class GuestDetailsFragment : Fragment() {
@@ -27,6 +28,7 @@ class GuestDetailsFragment : Fragment() {
         super.onStart()
         setDetailsData()
         showBackButton()
+        Observable<Guest>().subscribe({ println("CACA")}, {})
     }
 
     private fun showBackButton() {

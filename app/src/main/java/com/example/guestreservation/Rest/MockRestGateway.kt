@@ -1,6 +1,7 @@
 package com.example.guestreservation.Rest
 
 import com.example.guestreservation.Model.Guest
+import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.mock.BehaviorDelegate
 
@@ -12,7 +13,7 @@ class MockRestGateway: RestGateway {
         this.delegate = behaviorDelegate
     }
 
-    override fun getAllGuests(): Call<List<Guest>> {
+    override fun getAllGuests(): Observable<List<Guest>> {
         var guestList = ArrayList<Guest>()
         for (i in 0 .. 10) {
             var guest = Guest()
